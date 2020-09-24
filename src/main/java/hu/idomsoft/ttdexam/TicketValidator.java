@@ -13,7 +13,10 @@ public class TicketValidator {
         if (machineType.equals(MachineType.METRO)) {
             return !calculateTicketTime.minusMinutes(METRO_TRAVEL_TIME).isAfter(validationDate);
         }
-        return !calculateTicketTime.minusMinutes(NIGHTLY_TRAVEL_TIME).isAfter(replaceNotNecessaryYear(validationDate));
+        if (machineType.equals(MachineType.NIGHTLY)) {
+            return !calculateTicketTime.minusMinutes(NIGHTLY_TRAVEL_TIME).isAfter(replaceNotNecessaryYear(validationDate));
+        }
+        return true;
     }
 
     private LocalDateTime replaceNotNecessaryYear(LocalDateTime validationDate) {
