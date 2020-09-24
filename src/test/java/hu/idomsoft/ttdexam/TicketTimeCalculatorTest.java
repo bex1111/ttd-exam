@@ -9,7 +9,7 @@ import java.time.format.DateTimeFormatter;
 
 public class TicketTimeCalculatorTest {
 
-    public static final DateTimeFormatter TEST_DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+    private static final DateTimeFormatter TEST_DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
     private TicketTimeCalculator ticketTimeCalculator;
 
     @Before

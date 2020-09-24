@@ -5,10 +5,10 @@ import java.time.format.DateTimeFormatter;
 
 public class TicketTimeCalculator {
 
-    public static final String METRO_DATE_PATTERN = "yMMddHHmm";
-    public static final String OTHER_DATE_PATTERN = "yyyyMMddHHmm";
-    public static final int METRO_DATE_BEGIN_INDEX = 7;
-    public static final int OTHER_MACHINE_TIME_INDEX_OFFSET = 8;
+    private static final String METRO_DATE_PATTERN = "yMMddHHmm";
+    private static final String OTHER_DATE_PATTERN = "yyyyMMddHHmm";
+    private static final int METRO_DATE_BEGIN_INDEX = 7;
+    private static final int OTHER_MACHINE_TIME_INDEX_OFFSET = 8;
 
     public TicketTimeCalculator() {
     }
