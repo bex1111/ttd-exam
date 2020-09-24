@@ -28,7 +28,7 @@ public class TicketTimeCalculator {
         return fixYearInDate(ticketDate);
     }
 
-    private LocalDateTime fixYearInDate(LocalDateTime ticketDate,) {
+    private LocalDateTime fixYearInDate(LocalDateTime ticketDate) {
         int lastDigitOfCurrentYear = LocalDateTime.now().getYear() % 10;
         return ticketDate.plusYears(LocalDateTime.now().minusYears(lastDigitOfCurrentYear).getYear() - 10);
     }
