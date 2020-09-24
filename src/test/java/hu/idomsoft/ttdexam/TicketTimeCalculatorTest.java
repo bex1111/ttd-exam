@@ -18,13 +18,13 @@ public class TicketTimeCalculatorTest {
     }
 
     @Test
-    public void calculateMetroDate() {
+    public void calculateMetroDateTest() {
         String testDate = "2019-11-28 13:05";
         Assert.assertEquals(LocalDateTime.parse(testDate, TEST_DATE_TIME_FORMATTER), ticketTimeCalculator.calculate("0643xxx911281305", MachineType.METRO));
     }
 
     @Test
-    public void calculateOtherMachineDate() {
+    public void calculateOtherMachineDateTest() {
         String testDate = "2020-12-04 09:56";
         Assert.assertEquals(LocalDateTime.parse("2020-12-04 09:56", TEST_DATE_TIME_FORMATTER), ticketTimeCalculator.calculate("5151312040956", MachineType.OTHER));
         Assert.assertEquals(LocalDateTime.parse("2020-12-04 09:56", TEST_DATE_TIME_FORMATTER), ticketTimeCalculator.calculate("5151312040956", MachineType.NIGHTLY));
