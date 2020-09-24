@@ -8,21 +8,20 @@ public class TicketValidator {
     private static final int NIGHTLY_TRAVEL_TIME = 120;
 
     public boolean isValid(LocalDateTime validationDate, String ticketCode) {
-        MachineType machineType = new MachineRecognizer().recognize(ticketCode);
-        return validateTime(validationDate, ticketCode, machineType);
+        return validateTime(validationDate, ticketCode);
     }
 
     public boolean isValid(LocalDateTime validationDate, String ticketCode, int lineNumber) {
-        MachineType machineType = new MachineRecognizer().recognize(ticketCode);
-        return validateTime(validationDate, ticketCode, machineType) && validateLineNumber(machineType, ticketCode, lineNumber);
+        return isValid(validationDate, ticketCode) && validateLineNumber(ticketCode, lineNumber);
     }
 
-    private boolean validateLineNumber(MachineType machineType, String ticketCode, int lineNumber) {
+    private boolean validateLineNumber(String ticketCode, int lineNumber) {
         int ticketLineNumber = Integer.parseInt(ticketCode.substring(0, Integer.toString(lineNumber).length()));
         return lineNumber == ticketLineNumber;
     }
 
-    private boolean validateTime(LocalDateTime validationDate, String ticketCode, MachineType machineType) {
+    private boolean validateTime(LocalDateTime validationDate, String ticketCode) {
+        MachineType machineType = new MachineRecognizer().recognize(ticketCode);
         LocalDateTime calculateTicketTime = new TicketTimeCalculator().calculate(ticketCode, machineType);
         if (machineType.equals(MachineType.METRO)) {
             return !calculateTicketTime.minusMinutes(METRO_TRAVEL_TIME).isAfter(validationDate);
