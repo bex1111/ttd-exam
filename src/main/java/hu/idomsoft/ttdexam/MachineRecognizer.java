@@ -5,6 +5,9 @@ public class MachineRecognizer {
         if (ticketCode.contains("xxx")) {
             return "M";
         }
+        if (ticketCode.startsWith("9")) {
+            return "N";
+        }
         return null;
     }
 }
