@@ -1,4 +1,4 @@
-package PACKAGE_NAME;
+package hu.idomsoft.ttdexam;
 
 public class Main {
 }
