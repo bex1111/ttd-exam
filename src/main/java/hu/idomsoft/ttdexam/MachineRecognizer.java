@@ -2,13 +2,13 @@ package hu.idomsoft.ttdexam;
 
 public class MachineRecognizer {
 
-    public String recognize(String ticketCode) {
+    public MachineType recognize(String ticketCode) {
         if (ticketCode.contains("xxx")) {
-            return "M";
+            return MachineType.METRO;
         }
         if (ticketCode.startsWith("9")) {
-            return "N";
+            return MachineType.NIGHTLY;
         }
-        return "O";
+        return MachineType.OTHER;
     }
 }

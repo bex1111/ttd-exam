@@ -13,9 +13,8 @@ public class TicketTimeCalculator {
     public TicketTimeCalculator() {
     }
 
-    public LocalDateTime calculate(String ticketCode) {
-        String machineType = new MachineRecognizer().recognize(ticketCode);
-        return machineType.equals("M") ? generateMetroDate(ticketCode) : generateOtherMachineDate(ticketCode);
+    public LocalDateTime calculate(String ticketCode, MachineType machineType) {
+        return machineType.equals(MachineType.METRO) ? generateMetroDate(ticketCode) : generateOtherMachineDate(ticketCode);
     }
 
     private LocalDateTime generateOtherMachineDate(String ticketCode) {
