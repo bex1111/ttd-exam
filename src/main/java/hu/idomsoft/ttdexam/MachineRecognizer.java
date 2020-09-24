@@ -8,6 +8,6 @@ public class MachineRecognizer {
         if (ticketCode.startsWith("9")) {
             return "N";
         }
-        return null;
+        return "O";
     }
 }

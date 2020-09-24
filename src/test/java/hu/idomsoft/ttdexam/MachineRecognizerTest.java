@@ -16,4 +16,11 @@ public class MachineRecognizerTest {
         MachineRecognizer machineRecognizer = new MachineRecognizer();
         Assert.assertEquals("N", machineRecognizer.recognize("91451312040956"));
     }
+
+    @Test
+    public void otherMachineTest() {
+        MachineRecognizer machineRecognizer = new MachineRecognizer();
+        Assert.assertEquals("O", machineRecognizer.recognize("5151312040956"));
+        Assert.assertEquals("O", machineRecognizer.recognize("58151312040956"));
+    }
 }
