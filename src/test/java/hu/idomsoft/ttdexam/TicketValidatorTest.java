@@ -15,4 +15,10 @@ public class TicketValidatorTest {
         LocalDateTime testDate = LocalDateTime.parse("2019-11-28 13:05", TEST_DATE_TIME_FORMATTER);
         Assert.assertTrue(new TicketValidator().validate(testDate, "0643xxx911281355"));
     }
+
+    @Test
+    public void invalidMetroTicket() {
+        LocalDateTime testDate = LocalDateTime.parse("2019-11-28 11:05", TEST_DATE_TIME_FORMATTER);
+        Assert.assertFalse(new TicketValidator().validate(testDate, "0643xxx911281355"));
+    }
 }
