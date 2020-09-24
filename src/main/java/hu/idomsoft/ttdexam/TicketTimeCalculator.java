@@ -15,11 +15,7 @@ public class TicketTimeCalculator {
 
     public LocalDateTime calculate(String ticketCode) {
         String machineType = new MachineRecognizer().recognize(ticketCode);
-        if (machineType.equals("M")) {
-            return generateMetroDate(ticketCode);
-        } else {
-            return generateOtherMachineDate(ticketCode);
-        }
+        return machineType.equals("M") ? generateMetroDate(ticketCode) : generateOtherMachineDate(ticketCode);
     }
 
     private LocalDateTime generateOtherMachineDate(String ticketCode) {
@@ -29,6 +25,10 @@ public class TicketTimeCalculator {
 
     private LocalDateTime generateMetroDate(String ticketCode) {
         LocalDateTime ticketDate = LocalDateTime.parse(ticketCode.substring(METRO_DATE_BEGIN_INDEX), DateTimeFormatter.ofPattern(METRO_DATE_PATTERN));
+        return fixYearInDate(ticketDate);
+    }
+
+    private LocalDateTime fixYearInDate(LocalDateTime ticketDate,) {
         int lastDigitOfCurrentYear = LocalDateTime.now().getYear() % 10;
         return ticketDate.plusYears(LocalDateTime.now().minusYears(lastDigitOfCurrentYear).getYear() - 10);
     }
